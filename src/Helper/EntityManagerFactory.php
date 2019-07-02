@@ -8,16 +8,22 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\Setup;
 
+$isDevMode = true;
+
 class EntityManagerFactory
 {
-/**@return \Doctrine\ORM\EntityManagerInterface...*/
+/**@return EntityManagerInterface...
+ * @throws ORMException
+ */
+
 
 public function getEntityManager():EntityManagerInterface
 {
     $rootDir=__DIR__ . '/../..';
     $config = Setup::createAnnotationMetadataConfiguration(
         [$rootDir . '/src'],
-        true
+
+        $isDevMode = (true)
     );
     $connection=[
         'driver'=>'pdo_sqlite',
