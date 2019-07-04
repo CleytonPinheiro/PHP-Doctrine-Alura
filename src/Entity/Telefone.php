@@ -34,6 +34,7 @@ class Telefone
     public function setId( int $id): self
     {
         $this->id = $id;
+        return $this;
     }
 
     public function getNumero(): string
@@ -44,6 +45,7 @@ class Telefone
     public function setNumero(string $numero): self
     {
         $this->numero = $numero;
+        return $this;
     }
 
     public function getAluno(): Aluno

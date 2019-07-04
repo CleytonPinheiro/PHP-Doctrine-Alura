@@ -3,7 +3,9 @@
 
 namespace Alura\Doctrine\Entity;
 
-use mysql_xdevapi\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 
 /**
  * @Entity
@@ -21,12 +23,18 @@ use mysql_xdevapi\Collection;
       */
     private $nome;
      /**
-      * @OneToMany(targetEntity="Telefone", mappedBy="Telefone")
+      * @OneToMany(targetEntity="Telefone", mappedBy="aluno",cascade={"remove","persist"})
       */
     private $telefones;
-    public function __construct()
+     /**
+      * @ManyToMany(targetEntity="Curso", mappedBy="alunos")
+      */
+    private $cursos;
+
+     public function __construct()
     {
-        $this->telefones= new Collection();
+        $this->telefones= new ArrayCollection();
+        $this->cursos=new ArrayCollection();
     }
 
      public function getId(): int
@@ -55,5 +63,21 @@ use mysql_xdevapi\Collection;
     {
         return $this->telefones;
     }
+    public function addCurso (Curso $curso): self
+    {
+        if ($this->cursos->contains($curso)){
+            return $this;
+        }
+
+        $this->cursos->add($curso);
+        $curso->addAluno($this);
+
+        return $this;
+    }
+    public function getCursos():Collection
+    {
+        return $this->cursos;
+    }
+
 
 }
