@@ -1,6 +1,5 @@
 <?php
 
-
 return [
     'name' => 'Fundamentos Doctrine',
     'migrations_namespace' => 'Alura\\Doctrine\\Migrations',
@@ -10,5 +9,5 @@ return [
     'executed_at_column_name' => 'executed_at',
     'migrations_directory' => 'src/Migrations',
     'all_or_nothing' => true,
-    'check_database_platform' => true,
+
 ];

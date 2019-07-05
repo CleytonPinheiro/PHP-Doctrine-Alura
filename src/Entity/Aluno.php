@@ -33,8 +33,8 @@ use Doctrine\Common\Collections\Collection;
 
      public function __construct()
     {
-        $this->telefones= new ArrayCollection();
-        $this->cursos=new ArrayCollection();
+        $this->telefones = new ArrayCollection();
+        $this->cursos = new ArrayCollection();
     }
 
      public function getId(): int

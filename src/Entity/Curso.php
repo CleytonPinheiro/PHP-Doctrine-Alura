@@ -3,8 +3,8 @@
 
 namespace Alura\Doctrine\Entity;
 
-
 use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * @Entity
@@ -23,7 +23,7 @@ class Curso
     private $nome;
 
     /**
-     * @@ManyToMany(targetEntity="Aluno", inversedBy="cursos")
+     * @ManyToMany(targetEntity="Aluno", inversedBy="cursos")
      */
     private $alunos;
     public function __construct()
@@ -46,10 +46,10 @@ class Curso
         $this->nome = $nome;
         return $this;
     }
-    public function addAluno(Aluno $aluno)
+
+    public function addAluno (Aluno $aluno)
     {
-        if ($this->alunos->contains($aluno))
-        {
+        if ($this->alunos->contains($aluno)){
             return $this;
         }
         $this->alunos->add($aluno);
