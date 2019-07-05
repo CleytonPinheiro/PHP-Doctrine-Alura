@@ -74,6 +74,10 @@ use Doctrine\Common\Collections\Collection;
 
         return $this;
     }
+
+     /**
+      * @return Collection
+      */
     public function getCursos():Collection
     {
         return $this->cursos;
